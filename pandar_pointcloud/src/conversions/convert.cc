@@ -222,7 +222,7 @@ Convert::Convert(rclcpp::Node::SharedPtr& private_nh,
   if (publishmodel == "both_point_raw" || publishmodel == "point" ||
       LIDAR_NODE_TYPE != node_type) {
     printf("node.advertise pandar_points\n");
-    output_ = private_nh->create_publisher<sensor_msgs::msg::PointCloud2>("pandar_points");
+    output_ = private_nh->create_publisher<sensor_msgs::msg::PointCloud2>("pandar_points", 10);
     boost::thread processThr(boost::bind(&Convert::processLiDARData, this));
   }
 
